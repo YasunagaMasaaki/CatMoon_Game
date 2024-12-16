@@ -67,14 +67,4 @@ public class PlayerController : MonoBehaviour
         lightCollider.enabled = false;
         canUseLight = true;
     }
-
-    // ƒ‰ƒCƒg‚ª“G‚É“–‚½‚Á‚½‚Æ‚«
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy")) // “G‚Ìƒ^ƒO‚ª"Enemy"‚Ìê‡
-        {
-            // “G‚ğ–³—Í‰»
-            other.GetComponent<EnemyController>().Disable();
-        }
-    }
 }
