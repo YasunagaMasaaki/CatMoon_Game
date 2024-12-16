@@ -528,7 +528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078211781}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.69257444, w: 0.72134644}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70636207, w: 0.70785075}
   m_LocalPosition: {x: 0.35, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.0249, z: 1}
   m_ConstrainProportionsScale: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 42.793037
   m_PointLightOuterAngle: 42.793037
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3.6029832
+  m_PointLightOuterRadius: 3.9703407
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -617,8 +617,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011354674, y: 1.8799751}
-  m_Size: {x: 1.8617102, y: 3.3126893}
+  m_Offset: {x: -0.011354684, y: 2.0442107}
+  m_Size: {x: 1.8617105, y: 3.5098608}
   m_Direction: 0
 --- !u!1 &1447738316
 GameObject:
@@ -763,7 +763,7 @@ Transform:
   m_GameObject: {fileID: 1447738316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.68, y: -1.79, z: 0}
+  m_LocalPosition: {x: 4.71, y: -3.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -781,6 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d23269f52d5fe409711601935f68ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredExposureTime: 3
 --- !u!1 &1519404369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 1898746795}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.03, y: -1.79, z: 0}
+  m_LocalPosition: {x: -5.17, y: -3.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1027,7 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   playerLight: {fileID: 1078211783}
-  lightTime: 3
+  lightTime: 5
   jumpForce: 6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
