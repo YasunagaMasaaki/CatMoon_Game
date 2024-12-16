@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal; // Light2Dを使用するための名前空間
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed = 5;
+    [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] Light playerLight;
+    [SerializeField] Light2D playerLight;
     [SerializeField] float lightTime = 3f;
     private bool canUseLight = true;
 
@@ -23,10 +25,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector3(x,0,0) * speed * Time.deltaTime);
 
         //月の光発動
-        if(Input.GetKeyDown(KeyCode.L) && canUseLight)
-        {
-            StartCoroutine(MoonLight());
-        }
+        if(Input.GetKeyDown(KeyCode.L) && canUseLight) StartCoroutine(MoonLight());
     }
 
     private IEnumerator MoonLight()
@@ -35,6 +34,6 @@ public class PlayerController : MonoBehaviour
         playerLight.enabled = true;
         yield return new WaitForSeconds(lightTime);
         playerLight.enabled = false;
-        // ここで再び使用可能にする場合は特定の条件をチェック
+        canUseLight = true;
     }
 }
