@@ -1117,10 +1117,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1447738316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0d23269f52d5fe409711601935f68ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ad8c0e5d89cf3c4eb3075e2aedaf0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredExposureTime: 1
+  sleepTime: 1
+  attackRange: 1.5
+  attackCooldown: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1519404369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1441,7 @@ GameObject:
   - component: {fileID: 1898746800}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1585,8 +1590,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   playerLight: {fileID: 1078211783}
-  maxLightTime: 10
   lightSlider: {fileID: 254812097}
+  maxLightTime: 10
   jumpForce: 6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
