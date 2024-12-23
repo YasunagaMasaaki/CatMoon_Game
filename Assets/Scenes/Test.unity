@@ -1118,8 +1118,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029045561, y: 1.5776496}
-  m_Size: {x: 1.826327, y: 2.5767407}
+  m_Offset: {x: -0.13483298, y: 1.5776504}
+  m_Size: {x: 1.5005885, y: 2.5767415}
   m_Direction: 0
 --- !u!1 &1270119995
 GameObject:
@@ -1822,6 +1822,7 @@ GameObject:
   - component: {fileID: 1898746797}
   - component: {fileID: 1898746800}
   - component: {fileID: 1898746801}
+  - component: {fileID: 1898746802}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1941,6 +1942,7 @@ MonoBehaviour:
   lightSlider: {fileID: 254812097}
   maxLightTime: 10
   jumpForce: 6
+  groundCheckCollider: {fileID: 290834958}
 --- !u!61 &1898746801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1985,6 +1987,51 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 2.1199007, y: 2}
+  m_EdgeRadius: 0
+--- !u!61 &1898746802
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898746795}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.055887222, y: -0.1805718}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5769231, y: 0}
+    oldSize: {x: 2.6, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7858124, y: 0.9182935}
   m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
