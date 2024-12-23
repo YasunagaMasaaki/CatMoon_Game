@@ -47,7 +47,8 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector3(x,0,0) * moveSpeed * Time.deltaTime);
 
         //プレイヤーの向き変更
-        if (x != 0) transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
+        if (x != 0) 
+            transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
 
         //ジャンプ
         if (Input.GetButtonDown("Jump") && isGrounded )
@@ -57,8 +58,10 @@ public class PlayerController : MonoBehaviour
         }
 
         //Light発動
-        if (Input.GetKey(KeyCode.L) && lightTime > 0) UseLight();
-        else if (Input.GetKeyUp(KeyCode.L) || lightTime <= 0) StopLight();
+        if (Input.GetKey(KeyCode.L) && lightTime > 0) 
+            UseLight();
+        else if (Input.GetKeyUp(KeyCode.L) || lightTime <= 0) 
+            StopLight();
     }
 
     //Light発動
@@ -76,7 +79,8 @@ public class PlayerController : MonoBehaviour
         lightTime = Mathf.Clamp(lightTime, 0, maxLightTime);
 
         //スライダー更新
-        if(lightSlider != null) lightSlider.value = lightTime;
+        if(lightSlider != null) 
+            lightSlider.value = lightTime;
     }
     //Lightストップ
     private void StopLight()
@@ -92,7 +96,8 @@ public class PlayerController : MonoBehaviour
     //ジャンプ判定
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground")) isGrounded = true;
+        if (other.gameObject.CompareTag("Ground")) 
+            isGrounded = true;
     }
 
     //// ライトの時間を回復するメソッド（アイテムなどで使用）

@@ -57,7 +57,8 @@ public class AttakSleep : MonoBehaviour
         }
 
         // プレイヤーとの距離を測定して攻撃範囲内かを判定
-        if (player == null) return;
+        if (player == null) 
+            return;
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         isPlayerInRange = distanceToPlayer <= attackRange;
 
@@ -65,29 +66,37 @@ public class AttakSleep : MonoBehaviour
         if (isPlayerInRange && canAttack)
         {
             StartCoroutine(Attack());
+            Debug.Log("a");
         }
+            
     }
 
     //Lightが当たってるかどうか
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Light")) lightHitTime = 0.01f;
+        if (other.CompareTag("Light")) 
+            lightHitTime = 0.01f;
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Light")) lightHitTime = 0f; 
+        if (other.CompareTag("Light")) 
+            lightHitTime = 0f; 
     }
 
     // 無力化処理
     void Sleep()
     {
-        if (isSleep) return; // すでに無力化されている場合はスキップ
+        if (isSleep) 
+            return; // すでに無力化されている場合はスキップ
 
         isSleep = true;
         // 無力化時のアニメーションや効果音などを追加する場合はここで実装
-        if (sr != null) sr.color = Color.green;
-        if (enemyCollider != null) enemyCollider.enabled = false;
-        if (rb != null) rb.simulated = false;
+        if (sr != null) 
+            sr.color = Color.green;
+        if (enemyCollider != null) 
+            enemyCollider.enabled = false;
+        if (rb != null) 
+            rb.simulated = false;
     }
 
     //// 無力化解除（例えば一定時間後など）
@@ -103,14 +112,13 @@ public class AttakSleep : MonoBehaviour
     private IEnumerator Attack()
     {
         // 無力化状態中は攻撃をスキップ
-        if (isSleep) yield break;
+        if (isSleep) 
+            yield break;
 
         canAttack = false;
 
         if (player != null)
-        {
-            Destroy(player.gameObject); // プレイヤーオブジェクトを削除
-        }
+            Destroy(player.gameObject);
 
         // 攻撃クールダウン
         yield return new WaitForSeconds(attackCooldown);
