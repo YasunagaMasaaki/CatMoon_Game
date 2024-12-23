@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 6;
     private Rigidbody2D rb;
     private bool isGrounded;
+    [SerializeField] Collider2D groundCheckCollider; // 足元用のトリガーコライダー
 
     void Start()
     {
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour
         lightCollider = playerLight.GetComponent<CapsuleCollider2D>();
         lightCollider.isTrigger = true; // トリガーとして設定
         lightCollider.enabled = false; // 最初は無効化
+
+        // ライトのコライダーが地面と干渉しないようLayerを設定
+        Physics2D.IgnoreCollision(lightCollider, groundCheckCollider, true);
     }
 
     
@@ -93,11 +97,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //ジャンプ判定
-    void OnCollisionEnter2D(Collision2D other)
+    // 足元専用コライダーでの接地判定
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Ground")) 
+        if (other.CompareTag("Ground") && other == groundCheckCollider)
+        {
             isGrounded = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground") && other == groundCheckCollider)
+        {
+            isGrounded = false;
+        }
     }
 
     //// ライトの時間を回復するメソッド（アイテムなどで使用）

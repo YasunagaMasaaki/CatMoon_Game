@@ -66,7 +66,6 @@ public class AttakSleep : MonoBehaviour
         if (isPlayerInRange && canAttack)
         {
             StartCoroutine(Attack());
-            Debug.Log("a");
         }
             
     }

@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 5800117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.14, y: -1.43, z: -0.07641773}
+  m_LocalPosition: {x: 6.1, y: 3.08, z: -0.07641773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -585,7 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553271138}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +600,7 @@ Transform:
   m_GameObject: {fileID: 553271137}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.35, y: -1.43, z: -0.05646329}
+  m_LocalPosition: {x: 6.15, y: -4.05, z: -0.05646329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1339,7 +1339,7 @@ Transform:
   m_GameObject: {fileID: 1447738316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.71, y: -3.07, z: 0}
+  m_LocalPosition: {x: 0.27, y: -3.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1917,7 +1917,7 @@ Transform:
   m_GameObject: {fileID: 1898746795}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.89, y: -1.03, z: 0}
+  m_LocalPosition: {x: -7.09, y: -4.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1997,6 +1997,6 @@ SceneRoots:
   - {fileID: 1447738320}
   - {fileID: 627663167}
   - {fileID: 1726392654}
-  - {fileID: 5800118}
   - {fileID: 1898746799}
   - {fileID: 553271138}
+  - {fileID: 5800118}
