@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     //移動
     [SerializeField] float moveSpeed = 5;
 
+    private Animator anim;
+
     //Light使用
     [SerializeField] Light2D playerLight;
     private bool isUseLight = false;
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
 
         lightTime = maxLightTime;
         lightSlider.maxValue = maxLightTime;
@@ -49,6 +53,7 @@ public class PlayerController : MonoBehaviour
         //移動
         float x = Input.GetAxisRaw("Horizontal");
         transform.Translate(new Vector3(x,0,0) * moveSpeed * Time.deltaTime);
+        anim.SetBool("Walk",x != 0.0f);
 
         //プレイヤーの向き変更
         if (x != 0) 
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+            anim.SetBool("Jump", true);
         }
 
         //Light発動
@@ -103,6 +109,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Ground") && other == groundCheckCollider)
         {
             isGrounded = true;
+            anim.SetBool("Jump", false);
         }
     }
     void OnTriggerExit2D(Collider2D other)
