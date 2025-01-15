@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         lightCollider.enabled = false; // 最初は無効化
 
         // ライトのコライダーが地面と干渉しないようLayerを設定
-        Physics2D.IgnoreCollision(lightCollider, groundCheckCollider, true);
+        //Physics2D.IgnoreCollision(lightCollider, groundCheckCollider, true);
     }
 
     
