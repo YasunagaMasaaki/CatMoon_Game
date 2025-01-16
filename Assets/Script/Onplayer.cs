@@ -9,20 +9,20 @@ public class Onplayer : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && playerOnElevator == null)
+        if (collision.gameObject.CompareTag("Player") && playerOnElevator == null)
         {
             playerOnElevator = collision.gameObject;
-            playerOnElevator.transform.SetParent(elevator); // 子オブジェクトに設定
+            playerOnElevator.transform.SetParent(elevator); // エレベーターを親に設定
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (playerOnElevator != null)
             {
-                playerOnElevator.transform.SetParent(null, true); // 親解除（ワールド座標維持）
+                playerOnElevator.transform.SetParent(null); // 親子関係を解除
                 playerOnElevator = null;
             }
         }

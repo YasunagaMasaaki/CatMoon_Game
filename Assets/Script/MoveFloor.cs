@@ -21,31 +21,24 @@ public class MoveFloor : MonoBehaviour
 
     private void Update()
     {
-        if (moveFloor == null) return;
+        if (moveFloor == null) 
+            return;
 
-        if (isLightHit)
-        {
+        if (isLightHit) 
             moveFloor.position = Vector3.MoveTowards(moveFloor.position, movePosition.position, moveSpeed * Time.deltaTime);
-        }
         else
-        {
             moveFloor.position = Vector3.MoveTowards(moveFloor.position, firstPosition, moveSpeed * Time.deltaTime);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Light"))
-        {
             isLightHit = true;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Light"))
-        {
             isLightHit = false;
-        }
     }
 }

@@ -7,10 +7,9 @@ using UnityEditor.Tilemaps; // Light2Dを使用するための名前空間
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator anim;
     //移動
     [SerializeField] float moveSpeed = 5;
-
-    private Animator anim;
 
     //Light使用
     [SerializeField] Light2D playerLight;
@@ -18,14 +17,14 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D lightCollider;
     //LightSlider
     [SerializeField] Slider lightSlider;
-    [SerializeField] float maxLightTime = 10;
+    [SerializeField] float maxLightTime = 10f;
     private float lightTime;
 
     //ジャンプ
-    [SerializeField] float jumpForce = 6;
-    private Rigidbody2D rb;
-    private bool isGrounded;
-    [SerializeField] Collider2D groundCheckCollider; // 足元用のトリガーコライダー
+    [SerializeField] float jumpForce = 6f;
+    [SerializeField] private Rigidbody2D rb;
+    private bool isJumping = false;
+
 
     void Start()
     {
@@ -50,22 +49,8 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        //移動
-        float x = Input.GetAxisRaw("Horizontal");
-        transform.Translate(new Vector3(x,0,0) * moveSpeed * Time.deltaTime);
-        anim.SetBool("Walk",x != 0.0f);
-
-        //プレイヤーの向き変更
-        if (x != 0) 
-            transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
-
-        //ジャンプ
-        if (Input.GetButtonDown("Jump") && isGrounded )
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isGrounded = false;
-            anim.SetBool("Jump", true);
-        }
+        Move();
+        Jump();
 
         //Light発動
         if (Input.GetKey(KeyCode.L) && lightTime > 0) 
@@ -74,7 +59,33 @@ public class PlayerController : MonoBehaviour
             StopLight();
     }
 
-    //Light発動
+    private void Move()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        transform.Translate(new Vector3(x, 0, 0) * moveSpeed * Time.deltaTime);
+        anim.SetBool("Walk", x != 0.0f);
+        if (x != 0)
+            transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
+    }
+
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && !isJumping)
+        {
+            isJumping = true;
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            anim.SetBool("Jump", true);
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Stage"))
+        {
+            isJumping = false;
+            anim.SetBool("Jump", false);
+        }
+    }
+
     private void UseLight()
     {
         if (!isUseLight)
@@ -92,7 +103,6 @@ public class PlayerController : MonoBehaviour
         if(lightSlider != null) 
             lightSlider.value = lightTime;
     }
-    //Lightストップ
     private void StopLight()
     {
         if (isUseLight)
@@ -100,23 +110,6 @@ public class PlayerController : MonoBehaviour
             isUseLight = false;
             playerLight.enabled = false;
             lightCollider.enabled = false;
-        }
-    }
-
-    // 足元専用コライダーでの接地判定
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Ground") && other == groundCheckCollider)
-        {
-            isGrounded = true;
-            anim.SetBool("Jump", false);
-        }
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Ground") && other == groundCheckCollider)
-        {
-            isGrounded = false;
         }
     }
 
