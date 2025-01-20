@@ -41,9 +41,6 @@ public class PlayerController : MonoBehaviour
         lightCollider = playerLight.GetComponent<CapsuleCollider2D>();
         lightCollider.isTrigger = true; // トリガーとして設定
         lightCollider.enabled = false; // 最初は無効化
-
-        // ライトのコライダーが地面と干渉しないようLayerを設定
-        //Physics2D.IgnoreCollision(lightCollider, groundCheckCollider, true);
     }
 
     
