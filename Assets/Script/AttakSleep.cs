@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttakSleep : MonoBehaviour
 {
+    private Animator enemyAnim;
+
     // 睡眠状態
     private bool isSleep = false; 
 
@@ -27,9 +29,10 @@ public class AttakSleep : MonoBehaviour
     void Start()
     {
         //敵情報
-        sr = GetComponent<SpriteRenderer>();
         enemyCollider = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+
+        enemyAnim = GetComponent<Animator>();
 
         // プレイヤーをシーンから探す
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -90,8 +93,10 @@ public class AttakSleep : MonoBehaviour
 
         isSleep = true;
         // 無力化時のアニメーションや効果音などを追加する場合はここで実装
-        if (sr != null) 
-            sr.color = Color.green;
+        if (enemyAnim != null)
+        {
+            enemyAnim.SetBool("Sleep", true);
+        }
         if (enemyCollider != null) 
             enemyCollider.enabled = false;
         if (rb != null) 
