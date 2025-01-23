@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private bool isJumping = false;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,14 +35,12 @@ public class PlayerController : MonoBehaviour
         lightSlider.maxValue = maxLightTime;
         lightSlider.value = lightTime; 
         
-
         // ライトの範囲を表示するためのコライダーを追加
         lightCollider = playerLight.GetComponent<CapsuleCollider2D>();
         lightCollider.isTrigger = true; // トリガーとして設定
         lightCollider.enabled = false; // 最初は無効化
     }
 
-    
     void Update()
     {
         Move();

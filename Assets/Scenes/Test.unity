@@ -2997,6 +2997,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5845343932916392133, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
+      propertyPath: jumpForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845343932916392133, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6639224533744146719, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3026,10 +3034,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6703456205383801601, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 1131410655}
     - targetCorrespondingSourceObject: {fileID: 6703456205383801601, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 1131410660}
   m_SourcePrefab: {fileID: 100100000, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
 --- !u!1001 &6362943007012734614
