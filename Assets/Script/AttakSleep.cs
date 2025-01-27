@@ -44,7 +44,6 @@ public class AttakSleep : MonoBehaviour
         }
     }
 
-    //Lightが当たってるかどうか
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Light")) 
@@ -56,7 +55,6 @@ public class AttakSleep : MonoBehaviour
             lightHitTime = 0f; 
     }
 
-    // 無力化処理
     void Sleep()
     {
         if (isSleep) 
@@ -70,5 +68,7 @@ public class AttakSleep : MonoBehaviour
             enemyCollider.enabled = false;
         if (rb != null) 
             rb.simulated = false;
+        // 敵の向きを固定（例：右向きに固定）
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 }

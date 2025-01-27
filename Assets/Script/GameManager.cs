@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // 初期表示
         UpdateScoreUI();
     }
 
@@ -34,10 +33,8 @@ public class GameManager : MonoBehaviour
     {
         moonCollected++;
 
-        // スコアのUIを更新
         UpdateScoreUI();
 
-        // すべて集めたらゲームクリア
         if (moonCollected >= totalMoon)
         {
             GameClear();

@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using UnityEditor.Tilemaps; // Light2Dを使用するための名前空間
+using UnityEngine.SceneManagement; // シーン管理のために必要
 
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
+    [SerializeField] Transform respawnPoint;
     //移動
     [SerializeField] float moveSpeed = 5;
 
@@ -46,6 +48,9 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
 
+        // 落下中のアニメーション設定
+        CheckFall();
+
         //Light発動
         if (Input.GetKey(KeyCode.L) && lightTime > 0) 
             UseLight();
@@ -58,8 +63,12 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         transform.Translate(new Vector3(x, 0, 0) * moveSpeed * Time.deltaTime);
         anim.SetBool("Walk", x != 0.0f);
-        if (x != 0)
-            transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
+        // ライト発動中は向きを固定
+        if (!isUseLight)
+        {
+            if (x != 0)
+                transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
+        }
     }
 
     void Jump()
@@ -78,6 +87,13 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             anim.SetBool("Jump", false);
         }
+    }
+    void CheckFall()
+    {
+        if (rb.velocity.y < -1)
+            anim.SetBool("Fall", true);  
+        else
+            anim.SetBool("Fall", false); 
     }
 
     private void UseLight()
@@ -107,6 +123,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) // 敵との衝突を確認
+        {
+            Respawn(); // リスポーン処理
+        }
+    }
+
+    void Respawn()
+    {
+        Debug.Log("Respawning...");
+
+        // シーンをリセットして最初の状態に戻す
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+}
+
     //// ライトの時間を回復するメソッド（アイテムなどで使用）
     //public void RechargeLight(float amount)
     //{
@@ -118,4 +151,4 @@ public class PlayerController : MonoBehaviour
     //        lightSlider.value = currentLightTime;
     //    }
     //}
-}
+
