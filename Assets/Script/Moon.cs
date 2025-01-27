@@ -6,10 +6,19 @@ public class Moon : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // プレイヤーと接触した場合
+        if (other.CompareTag("Player"))
         {
             GameManager.instance.AddMoon(); // スコアを追加
-            Destroy(gameObject); // オブジェクトを削除
+
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if(playerController != null)
+            {
+                playerController.lightTime = playerController.maxLightTime;
+            }
+            //スライダー更新
+            if (playerController.lightSlider != null)
+                playerController.lightSlider.value = playerController.lightTime;
+            Destroy(gameObject);
         }
     }
 }

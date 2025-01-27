@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2169110883054497660}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.675, y: -3.933, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -129,11 +129,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b6d85d47160364eb8a31e114576a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
   moveSpeed: 5
   playerLight: {fileID: 608387751993938389}
   lightSlider: {fileID: 0}
-  maxLightTime: 10
-  jumpForce: 6
+  maxLightTime: 20
+  lightTime: 0
+  jumpForce: 9
   rb: {fileID: 5250295255431324487}
 --- !u!61 &5927886571082742137
 BoxCollider2D:
@@ -167,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13249135, y: 0.77102256}
+  m_Offset: {x: 0.04590118, y: 0.70649195}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5769231, y: 0}
@@ -178,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5257974, y: 1.5420451}
+  m_Size: {x: 1.2660272, y: 1.3940177}
   m_EdgeRadius: 0
 --- !u!61 &5860999067963726799
 BoxCollider2D:
@@ -212,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04350996, y: -0.016027808}
+  m_Offset: {x: 0.020122528, y: -0.016027808}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5769231, y: 0}
@@ -223,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3897429, y: 0.2426455}
+  m_Size: {x: 0.8582134, y: 0.2426455}
   m_EdgeRadius: 0
 --- !u!95 &18585613421628612
 Animator:

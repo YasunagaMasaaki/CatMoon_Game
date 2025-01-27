@@ -18,9 +18,9 @@ public class PlayerController : MonoBehaviour
     private bool isUseLight = false;
     private CapsuleCollider2D lightCollider;
     //LightSlider
-    [SerializeField] Slider lightSlider;
-    [SerializeField] float maxLightTime = 10f;
-    private float lightTime;
+    public Slider lightSlider;
+    public float maxLightTime = 10f;
+    public float lightTime;
 
     //ジャンプ
     [SerializeField] float jumpForce = 6f;
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         lightTime = Mathf.Clamp(lightTime, 0, maxLightTime);
 
         //スライダー更新
-        if(lightSlider != null) 
+        if (lightSlider != null)
             lightSlider.value = lightTime;
     }
     private void StopLight()

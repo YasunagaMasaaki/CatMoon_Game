@@ -41,10 +41,8 @@ public class EnemyMove : MonoBehaviour
         Vector3 movement = transform.position - previousPosition;
         float x = movement.x; // x方向の移動量を取得
 
-        // アニメーションの設定
-        anim.SetBool("Move", x != 0.0f); // 移動しているときだけアニメーションを再生
+        anim.SetBool("Move", x != 0.0f);
 
-        // 向きを変更
         if (x != 0)
             transform.localScale = new Vector3(Mathf.Sign(-x), 1, 1);
 
