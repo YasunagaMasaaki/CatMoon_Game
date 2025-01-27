@@ -655,7 +655,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2072,7 +2072,7 @@ Transform:
   m_GameObject: {fileID: 1286373006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.45, y: -3.89, z: -10}
+  m_LocalPosition: {x: -4.462, y: -3.979, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2823,11 +2823,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1432629264323736408, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.45
+      value: -4.462
       objectReference: {fileID: 0}
     - target: {fileID: 1432629264323736408, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.89
+      value: -3.979
       objectReference: {fileID: 0}
     - target: {fileID: 1432629264323736408, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2888,6 +2888,22 @@ PrefabInstance:
     - target: {fileID: 5860999067963726799, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: m_Offset.x
       value: 0.020122528
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927886571082742137, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2660272
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927886571082742137, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3940177
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927886571082742137, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.04590118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927886571082742137, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.70649195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
