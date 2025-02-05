@@ -7,29 +7,27 @@ public class BackGround : MonoBehaviour
     [SerializeField, Header("視野効果"), Range(0, 1)]
     private float parallxEffect;
 
-    [SerializeField, Header("視差効果（Y軸）"), Range(0, 1)]
-    private float parallaxEffectY;
-
-    [SerializeField, Header("プレイヤー")]
-    private Transform player;
-
     private GameObject newcamera;
     private float length;
     private float startPosx;
-    private float startPosY;
+
+    private float minY;
+    //private Vector3 initPos;
 
     void Start()
     {
         startPosx = transform.position.x;
-        startPosY = transform.position.y;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
         newcamera = Camera.main.gameObject;
+
+
+        minY = transform.position.y;
     }
 
    
     void Update()
     {
-        
+        //FollowPlayer();
     }
 
     private void FixedUpdate()
@@ -37,14 +35,24 @@ public class BackGround : MonoBehaviour
         Parallax();
     }
 
+    //private void FollowPlayer()
+    //{
+        
+    //    float y = newcamera.transform.position.y;
+    //    y = Mathf.Clamp(y, minY, Mathf.Infinity);
+    //    transform.position = new Vector3(transform.position.x, y, transform.position.z);
+    //}
+
     private void Parallax()
     {
         float temp = newcamera.transform.position.x * (1- parallxEffect);
         float dist = newcamera.transform.position.x * parallxEffect;
 
-        float distY = (player.position.y - startPosY) * parallaxEffectY;
+        float y = newcamera.transform.position.y;
+        y = Mathf.Clamp(y, minY, Mathf.Infinity);
+    
 
-        transform.position = new Vector3(startPosx + dist, startPosY + distY, transform.position.z);
+        transform.position = new Vector3(startPosx + dist,y, transform.position.z);
 
         if (temp > startPosx + length)
         {
