@@ -124,14 +124,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: MoonFragment
     originalName: 
-    pivot: {x: 0.4827586, y: -0.033333335}
+    pivot: {x: 0.5, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 29
+      width: 30
       height: 30
     spriteID: 7f7827539dbd8de4ea609f7e2113df00
     spriteBone: []
@@ -155,9 +155,9 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 1
         y: 1
-        width: 29
+        width: 30
         height: 30
       spriteId: 7f7827539dbd8de4ea609f7e2113df00
     linkedCells: []

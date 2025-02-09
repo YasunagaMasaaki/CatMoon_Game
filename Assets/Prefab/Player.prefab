@@ -214,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020122528, y: -0.016027808}
+  m_Offset: {x: 0.04071045, y: -0.016027808}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5769231, y: 0}
@@ -225,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8582134, y: 0.2426455}
+  m_Size: {x: 0.5333843, y: 0.2426455}
   m_EdgeRadius: 0
 --- !u!95 &18585613421628612
 Animator:
@@ -296,9 +296,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.15
+  m_FalloffIntensity: 0.5
   m_Color: {r: 0.8584906, g: 0.8402264, b: 0.34420612, a: 1}
-  m_Intensity: 1
+  m_Intensity: 10
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 31.84
   m_PointLightOuterAngle: 31.84
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2.587215
+  m_PointLightOuterRadius: 2.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
