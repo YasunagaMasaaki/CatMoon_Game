@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] Transform respawnPoint;
+    [SerializeField,Header("体力")]
+    private int hp;
     //移動
     [SerializeField] float moveSpeed = 5;
 
@@ -127,28 +129,27 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) // 敵との衝突を確認
         {
-            Respawn(); // リスポーン処理
+            Respawn(collision.gameObject); // リスポーン処理
         }
     }
 
-    void Respawn()
+    public void Damage(int damage)
     {
-        Debug.Log("Respawning...");
+        hp = Mathf.Max(hp - damage, 0);
+    }
 
-        // シーンをリセットして最初の状態に戻す
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    void Respawn(GameObject enemy)
+    {
+        enemy.GetComponent<AttakSleep>().PlayerDamage(this);
+        //Debug.Log("Respawning...");
+
+        //// シーンをリセットして最初の状態に戻す
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public int GetHP()
+    {
+        return hp;
     }
 }
-
-    //// ライトの時間を回復するメソッド（アイテムなどで使用）
-    //public void RechargeLight(float amount)
-    //{
-    //    currentLightTime += amount;
-    //    currentLightTime = Mathf.Clamp(currentLightTime, 0, maxLightTime);
-
-    //    if (lightSlider != null)
-    //    {
-    //        lightSlider.value = currentLightTime;
-    //    }
-    //}
 

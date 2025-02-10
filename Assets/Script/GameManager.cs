@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         // テキストを "収集数 / 合計数" に更新
-        scoreText.text = $"{moonCollected} / {totalMoon}";
+        scoreText.text = $"{moonCollected}/{totalMoon}";
     }
 
     private void GameClear()

@@ -11,11 +11,14 @@ public class AttakSleep : MonoBehaviour
 
     //敵情報 
     private Collider2D enemyCollider; 
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
+    [SerializeField, Header("攻撃力")]
+    private int attackPower;
 
     //Light時間
     private float lightHitTime = 0f; // ライトが当たっている時間
     [SerializeField] float sleepTime = 1f; //　眠るまでに必要な時間
+    private float wakeUpTime = 5f;
 
     void Start()
     {
@@ -69,6 +72,26 @@ public class AttakSleep : MonoBehaviour
         if (rb != null) 
             rb.simulated = false;
         // 敵の向きを固定（例：右向きに固定）
-        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3
+            (Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        Invoke("WakeUp", wakeUpTime);
+    }
+
+    void WakeUp()
+    {
+        isSleep = false;
+
+        if (enemyAnim != null)
+            enemyAnim.SetBool("Sleep", false);
+        if (enemyCollider != null)
+            enemyCollider.enabled = true;
+        if (rb != null)
+            rb.simulated = true;
+    }
+
+    public void PlayerDamage(PlayerController player)
+    {
+        player.Damage(attackPower);
     }
 }
