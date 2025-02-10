@@ -129,27 +129,32 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) // 敵との衝突を確認
         {
-            Respawn(collision.gameObject); // リスポーン処理
+            Hit(collision.gameObject); // リスポーン処理
         }
     }
 
     public void Damage(int damage)
     {
         hp = Mathf.Max(hp - damage, 0);
+        Dead();
     }
 
-    void Respawn(GameObject enemy)
+    void Hit(GameObject enemy)
     {
         enemy.GetComponent<AttakSleep>().PlayerDamage(this);
-        //Debug.Log("Respawning...");
-
-        //// シーンをリセットして最初の状態に戻す
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public int GetHP()
     {
         return hp;
+    }
+
+    private void Dead()
+    {
+        if(hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

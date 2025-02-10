@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
 
+    [SerializeField, Header("ゲームオーバーUI")]
+    private GameObject gameOverUI;
+
+    private GameObject player;
+
     void Awake()
     {
         if (instance == null)
@@ -27,6 +32,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateScoreUI();
+
+        player = FindObjectOfType<PlayerController>().gameObject;
+    }
+
+    private void Update()
+    {
+        ShowGameOverUI();
     }
 
     public void AddMoon()
@@ -52,5 +64,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Clear!");
         // ゲームクリア時の処理を追加
         // 例: シーン切り替え、クリア画面表示など
+    }
+
+    private void ShowGameOverUI()
+    {
+        if (player != null) return;
+
+        gameOverUI.SetActive(true);
     }
 }

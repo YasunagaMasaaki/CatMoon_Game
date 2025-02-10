@@ -20,6 +20,7 @@ public class CameraManager : MonoBehaviour
 
     private void FollowPlayer()
     {
+        if (player == null) return;
         float x = player.transform.position.x;
         float y = player.transform.position.y; 
         x = Mathf.Clamp(x,initPos.x,Mathf.Infinity);
