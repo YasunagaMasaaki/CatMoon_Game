@@ -508,6 +508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531a376d39f799d4a9779b2849f52ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeTime: 0.25
+  shakeMagnitude: 0.25
 --- !u!1 &254467793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,6 +3033,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: flashTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: damageTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: lightSlider
       value: 
       objectReference: {fileID: 254812097}
@@ -3094,6 +3104,10 @@ PrefabInstance:
     - target: {fileID: 5266094101501595684, guid: a8363db271978b44082d6531d32b1991, type: 3}
       propertyPath: m_Name
       value: MoveEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266094101501595684, guid: a8363db271978b44082d6531d32b1991, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3212,6 +3226,10 @@ PrefabInstance:
     - target: {fileID: 6703456205383801601, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703456205383801601, guid: 856dd0b7d6c49eb40b4e12b311c0bbea, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

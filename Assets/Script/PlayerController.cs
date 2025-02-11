@@ -9,11 +9,15 @@ using UnityEngine.SceneManagement; // シーン管理のために必要
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField] Transform respawnPoint;
+    private SpriteRenderer spriteRenderer;
     [SerializeField,Header("体力")]
     private int hp;
-    //移動
-    [SerializeField] float moveSpeed = 5;
+    [SerializeField, Header("無敵時間")]
+    private float damageTime;
+    [SerializeField,Header("点滅時間")]
+    private float flashTime;
+    [SerializeField,Header("移動速度")] 
+    private float moveSpeed = 5;
 
     //Light使用
     [SerializeField] Light2D playerLight;
@@ -21,17 +25,20 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D lightCollider;
     //LightSlider
     public Slider lightSlider;
-    public float maxLightTime = 10f;
+    [SerializeField,Header("ライト使用可能時間")]
+    public float maxLightTime;
     public float lightTime;
 
     //ジャンプ
-    [SerializeField] float jumpForce = 6f;
+    [SerializeField,Header("ジャンプ力")] 
+    private float jumpForce = 6f;
     [SerializeField] private Rigidbody2D rb;
     private bool isJumping = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         anim = GetComponent<Animator>();
 
@@ -129,7 +136,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) // 敵との衝突を確認
         {
-            Hit(collision.gameObject); // リスポーン処理
+            Hit(collision.gameObject); 
+            gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
+            StartCoroutine(HitDamage());
         }
     }
 
@@ -142,6 +151,20 @@ public class PlayerController : MonoBehaviour
     void Hit(GameObject enemy)
     {
         enemy.GetComponent<AttakSleep>().PlayerDamage(this);
+    }
+
+    IEnumerator HitDamage()
+    {
+        Color color = spriteRenderer.color;
+        for(int i =0; i < damageTime; i++)
+        {
+            yield return new WaitForSeconds(flashTime);
+            spriteRenderer.color = new Color(color.r, color.g, color.b,0.0f); 
+            yield return new WaitForSeconds(flashTime);
+            spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
+        }
+        spriteRenderer.color = color;
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     public int GetHP()
