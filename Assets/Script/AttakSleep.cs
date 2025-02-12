@@ -90,8 +90,8 @@ public class AttakSleep : MonoBehaviour
             rb.simulated = true;
     }
 
-    public void PlayerDamage(PlayerController player)
+    public void PlayerDamage(PlayerController player,Vector2 knockbackDir)
     {
-        player.Damage(attackPower);
+        player.Damage(attackPower, knockbackDir);
     }
 }

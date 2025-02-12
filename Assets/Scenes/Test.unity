@@ -2960,30 +2960,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 608387751993938389, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: m_Intensity
-      value: 15.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 608387751993938389, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: m_PointLightInnerAngle
-      value: 31.839996
-      objectReference: {fileID: 0}
-    - target: {fileID: 608387751993938389, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: m_PointLightOuterAngle
-      value: 31.839996
-      objectReference: {fileID: 0}
-    - target: {fileID: 608387751993938389, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 608387751993938389, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 608387751993938389, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: 940312499
-      objectReference: {fileID: 0}
     - target: {fileID: 1432629264323736408, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.289
@@ -3029,21 +3005,21 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
-      propertyPath: hp
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: flashTime
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: damageTime
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: lightSlider
       value: 
       objectReference: {fileID: 254812097}
+    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: knockbackForce
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

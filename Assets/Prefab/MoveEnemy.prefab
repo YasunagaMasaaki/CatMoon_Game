@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5730172677387667327}
   - component: {fileID: 552891246415456844}
   - component: {fileID: 2607253322100442192}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MoveEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad8c0e5d89cf3c4eb3075e2aedaf0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 1
   sleepTime: 1
 --- !u!114 &2607253322100442192
 MonoBehaviour:

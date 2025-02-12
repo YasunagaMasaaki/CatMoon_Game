@@ -17,9 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField,Header("点滅時間")]
     private float flashTime;
     [SerializeField,Header("移動速度")] 
-    private float moveSpeed = 5;
+    private float moveSpeed;
 
-    //Light使用
     [SerializeField] Light2D playerLight;
     private bool isUseLight = false;
     private CapsuleCollider2D lightCollider;
@@ -31,9 +30,14 @@ public class PlayerController : MonoBehaviour
 
     //ジャンプ
     [SerializeField,Header("ジャンプ力")] 
-    private float jumpForce = 6f;
-    [SerializeField] private Rigidbody2D rb;
+    private float jumpForce;
+    private Rigidbody2D rb;
     private bool isJumping = false;
+
+    [SerializeField,Header("ノックバックの強さ")] 
+    private float knockbackForce; // ノックバックの強さ
+    private float knockbackDuration = 0.2f;
+    private bool isKnockedBack = false;
 
     void Start()
     {
@@ -138,46 +142,64 @@ public class PlayerController : MonoBehaviour
         {
             Hit(collision.gameObject); 
             gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
-            StartCoroutine(HitDamage());
+            StartCoroutine(Muteki());
         }
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage, Vector2 knockbackDir)
     {
         hp = Mathf.Max(hp - damage, 0);
         Dead();
+
+        // ノックバックを適用
+        if (!isKnockedBack)
+        {
+            StartCoroutine(Knockback(knockbackDir));
+        }
     }
 
     void Hit(GameObject enemy)
     {
-        enemy.GetComponent<AttakSleep>().PlayerDamage(this);
+        Vector2 knockbackDir = (transform.position - enemy.transform.position).normalized; // 敵の方向からノックバック方向を計算
+        enemy.GetComponent<AttakSleep>().PlayerDamage(this, knockbackDir);
     }
 
-    IEnumerator HitDamage()
+    IEnumerator Knockback(Vector2 direction)
+    {
+        isKnockedBack = true;
+        rb.velocity = direction * knockbackForce;
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        rb.velocity = Vector2.zero;
+        isKnockedBack = false;
+    }
+
+    IEnumerator Muteki()
     {
         Color color = spriteRenderer.color;
-        for(int i =0; i < damageTime; i++)
+        for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(flashTime);
-            spriteRenderer.color = new Color(color.r, color.g, color.b,0.0f); 
-            yield return new WaitForSeconds(flashTime);
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = new Color(color.r, color.g, color.b, 0.0f);
+            yield return new WaitForSeconds(0.1f);
             spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
         }
         spriteRenderer.color = color;
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
-    public int GetHP()
-    {
-        return hp;
-    }
-
     private void Dead()
     {
-        if(hp <= 0)
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public int GetHP()
+    {
+        return hp;
     }
 }
 
