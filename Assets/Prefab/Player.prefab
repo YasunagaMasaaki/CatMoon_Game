@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
-  damageTime: 3
+  damageTime: 1
   flashTime: 0.1
   moveSpeed: 5
   playerLight: {fileID: 608387751993938389}
@@ -138,7 +138,7 @@ MonoBehaviour:
   maxLightTime: 20
   lightTime: 0
   jumpForce: 9
-  rb: {fileID: 5250295255431324487}
+  knockbackForce: 10
 --- !u!61 &5927886571082742137
 BoxCollider2D:
   m_ObjectHideFlags: 0
