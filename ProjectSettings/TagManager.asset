@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Pole
   - Stage
+  - Door
   layers:
   - Default
   - TransparentFX
