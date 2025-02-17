@@ -12,9 +12,15 @@ public class Switch : MonoBehaviour
     [SerializeField, Header("カウントダウンUI")]
     private Text countdownText; // UIのText (TextMeshProの場合は TMP_Text)
 
+    [SerializeField, Header("スライダーUI")]
+    private Slider lightSlider; // スイッチのスライダー
+
     void Start()
     {
         countdownText.gameObject.SetActive(false); // 最初は非表示
+
+        lightSlider.maxValue = openDoorTime;
+        lightSlider.value = 0;
     }
 
     // Update is called once per frame
@@ -23,11 +29,13 @@ public class Switch : MonoBehaviour
         if (lightHitTime > 0)
         {
             lightHitTime += Time.deltaTime;
+            lightSlider.value = lightHitTime; // スライダー更新
 
             if (lightHitTime >= openDoorTime)
             {
                 OpenDoor();
-                return;
+                lightHitTime = 0f; // リセット
+                lightSlider.value = 0; // スライダーもリセット
             }
         }
     }
@@ -40,7 +48,11 @@ public class Switch : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Light"))
+        {
             lightHitTime = 0f;
+            lightSlider.value = 0;
+        }
+            
     }
 
     private void OpenDoor()
