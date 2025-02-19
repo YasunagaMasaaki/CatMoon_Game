@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("変更するエレベーター")]
     private GameObject movePoint;
 
-    private Vector2 movePosition = new Vector2(73,35);
+    private Vector2 movePosition = new Vector2(73.5f,35f);
 
     [SerializeField, Header("ゲームオーバーUI")]
     private GameObject gameOverUI;
@@ -43,21 +43,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        ShowGameOverUI();
-    }
-
-    public void AddMoon()
-    {
         int lastmoon = 4;
 
-        moonCollected++;
-
-        UpdateScoreUI();
+        ShowGameOverUI();
 
         if (moonCollected == lastmoon)
         {
             Last();
         }
+    }
+
+    public void AddMoon()
+    {
+        
+
+        moonCollected++;
+
+        UpdateScoreUI();
+
+        
         if (moonCollected >= totalMoon)
         {
             GameClear();
@@ -71,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        // テキストを "収集数 / 合計数" に更新
         scoreText.text = $"{moonCollected}/{totalMoon}";
     }
 
