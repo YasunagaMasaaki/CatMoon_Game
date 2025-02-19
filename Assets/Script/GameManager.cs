@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
 
+    [SerializeField, Header("変更するエレベーター")]
+    private GameObject movePoint;
+
+    private Vector2 movePosition = new Vector2(73,35);
+
     [SerializeField, Header("ゲームオーバーUI")]
     private GameObject gameOverUI;
 
@@ -43,14 +48,25 @@ public class GameManager : MonoBehaviour
 
     public void AddMoon()
     {
+        int lastmoon = 4;
+
         moonCollected++;
 
         UpdateScoreUI();
 
+        if (moonCollected == lastmoon)
+        {
+            Last();
+        }
         if (moonCollected >= totalMoon)
         {
             GameClear();
         }
+    }
+
+    private void Last()
+    {
+       movePoint.transform.position = movePosition;
     }
 
     private void UpdateScoreUI()
