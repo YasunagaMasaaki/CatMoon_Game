@@ -43,25 +43,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        int lastmoon = 4;
-
         ShowGameOverUI();
-
-        if (moonCollected == lastmoon)
-        {
-            Last();
-        }
     }
 
     public void AddMoon()
     {
-        
-
         moonCollected++;
 
         UpdateScoreUI();
 
-        
+        if (moonCollected == 4)
+        {
+            Last();
+        }
         if (moonCollected >= totalMoon)
         {
             GameClear();
