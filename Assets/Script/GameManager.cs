@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
+    private bool bStart;
+    private Fade fade;
+
     void Awake()
     {
         if (instance == null)
@@ -39,6 +44,15 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
 
         player = FindObjectOfType<PlayerController>().gameObject;
+
+        bStart = false;
+        fade = FindObjectOfType<Fade>();
+        fade.FadeStart(GameStart);
+    }
+
+    private void GameStart()
+    {
+        bStart=true;
     }
 
     private void Update()
@@ -74,9 +88,18 @@ public class GameManager : MonoBehaviour
 
     private void GameClear()
     {
-        Debug.Log("Game Clear!");
-        // ゲームクリア時の処理を追加
-        // 例: シーン切り替え、クリア画面表示など
+        SceneManager.LoadScene("End");
+
+        //if (bStart)
+        //{
+        //    fade.FadeStart(End);
+        //    bStart = false;
+        //}
+    }
+
+    private void End()
+    {
+        SceneManager.LoadScene("End");
     }
 
     private void ShowGameOverUI()
