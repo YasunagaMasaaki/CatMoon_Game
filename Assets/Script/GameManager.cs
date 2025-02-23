@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
-    private bool bStart;
     private Fade fade;
 
     void Awake()
@@ -45,19 +44,19 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType<PlayerController>().gameObject;
 
-        bStart = false;
+        
         fade = FindObjectOfType<Fade>();
         fade.FadeStart(GameStart);
     }
 
     private void GameStart()
     {
-        bStart=true;
+        ShowGameOverUI();
     }
 
     private void Update()
     {
-        ShowGameOverUI();
+        //ShowGameOverUI();
     }
 
     public void AddMoon()
@@ -88,13 +87,7 @@ public class GameManager : MonoBehaviour
 
     private void GameClear()
     {
-        SceneManager.LoadScene("End");
-
-        //if (bStart)
-        //{
-        //    fade.FadeStart(End);
-        //    bStart = false;
-        //}
+        fade.FadeStart(End);
     }
 
     private void End()

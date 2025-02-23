@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class ButtonManager : MonoBehaviour
     [SerializeField, Header("ルール２")]
     private GameObject rulePanel2;
 
+    private Fade fade;
+
     void Start()
     {
         startButton.onClick.AddListener(OnStartButtonClick);
@@ -32,14 +35,19 @@ public class ButtonManager : MonoBehaviour
         howButton.onClick.AddListener(OnHowButtonClick);
         ruleButton.onClick.AddListener(OnRuleButtonClick);
         rule2Button.onClick.AddListener(OnRule2ButtonClick);
+
+        fade = FindObjectOfType<Fade>();
     }
 
     // ゲーム開始の処理
     void OnStartButtonClick()
     {
-        Debug.Log("ゲームを開始します！");
-        // 例: シーン遷移
-        // SceneManager.LoadScene("GameScene");
+        fade.FadeStart(GameStart);
+
+    }
+    private void GameStart()
+    {
+        SceneManager.LoadScene("Game");
     }
 
     // ゲーム終了の処理

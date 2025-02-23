@@ -63,7 +63,7 @@ public class Fade : MonoBehaviour
 
     private void FadeOut()
     {
-        fadeCount -= Time.deltaTime;
+        fadeCount += Time.deltaTime;
         if(fadeCount >= fadeTime)
         {
             mode = Mode.FadeIn;
