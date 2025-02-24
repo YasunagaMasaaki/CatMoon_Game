@@ -10,11 +10,19 @@ public class HintArea : MonoBehaviour
 
     private bool hasTriggered = false;
 
+    [SerializeField, Header("ヒント音")]
+    private GameObject hintSE;
+    [SerializeField, Header("カウント音")]
+    private GameObject countSE;
+    [SerializeField, Header("BGM")]
+    private AudioSource bgm;
+
     void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             hintPanel.SetActive(false);
+            bgm.Play();
             Time.timeScale = 1f; // 時間を元に戻す
         }
     }
@@ -24,6 +32,8 @@ public class HintArea : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasTriggered) // Playerタグがある場合
         {
+            bgm.Stop();
+            Instantiate(hintSE);
             hasTriggered = true;
             hintPanel.SetActive(true);
             isPlayerInRange = true;

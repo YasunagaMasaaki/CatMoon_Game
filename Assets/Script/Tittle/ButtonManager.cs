@@ -26,6 +26,13 @@ public class ButtonManager : MonoBehaviour
 
     private Fade fade;
 
+    [SerializeField, Header("スタート音")]
+    private GameObject startSE;
+    [SerializeField, Header("ページ音")]
+    private GameObject nextPageSE;
+    [SerializeField, Header("閉じる音")]
+    private GameObject closeSE;
+
     void Start()
     {
         startButton.onClick.AddListener(OnStartButtonClick);
@@ -42,8 +49,8 @@ public class ButtonManager : MonoBehaviour
     // ゲーム開始の処理
     void OnStartButtonClick()
     {
+        Instantiate(startSE);
         fade.FadeStart(GameStart);
-
     }
     private void GameStart()
     {
@@ -60,12 +67,14 @@ public class ButtonManager : MonoBehaviour
     // 遊び方説明画面の処理
     void OnManualButtonClick()
     {
+        Instantiate(nextPageSE);
         buttonPanel.SetActive(true);
         howPlayPanel.SetActive(true);
     }
 
     void OnCloseButtonClick()
     {
+        Instantiate(closeSE);
         buttonPanel.SetActive(false);
         howPlayPanel.SetActive(false);
         rulePanel.SetActive(false);
@@ -73,18 +82,21 @@ public class ButtonManager : MonoBehaviour
     }
     void OnHowButtonClick()
     {
+        Instantiate(nextPageSE);
         howPlayPanel.SetActive(true);
         rulePanel.SetActive(false);
         rulePanel2.SetActive(false);
     }
     void OnRuleButtonClick()
     {
+        Instantiate(nextPageSE);
         rulePanel.SetActive(true);
         howPlayPanel.SetActive(false);
         rulePanel2.SetActive(false);
     }
     void OnRule2ButtonClick()
     {
+        Instantiate(nextPageSE);
         rulePanel2.SetActive(true);
         howPlayPanel.SetActive(false);
         rulePanel.SetActive(false);

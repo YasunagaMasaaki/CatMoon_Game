@@ -26,6 +26,12 @@ public class GameManager : MonoBehaviour
 
     private Fade fade;
 
+    [SerializeField, Header("ゲームオーバー音")]
+    private GameObject gameOverSE;
+    [SerializeField, Header("BGM")]
+    private AudioSource bgm;
+
+
     void Awake()
     {
         if (instance == null)
@@ -40,23 +46,20 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        UpdateScoreUI();
-
         player = FindObjectOfType<PlayerController>().gameObject;
 
-        
         fade = FindObjectOfType<Fade>();
         fade.FadeStart(GameStart);
     }
 
     private void GameStart()
     {
-        ShowGameOverUI();
+        UpdateScoreUI();
     }
 
     private void Update()
     {
-        //ShowGameOverUI();
+        ShowGameOverUI();
     }
 
     public void AddMoon()
@@ -97,8 +100,10 @@ public class GameManager : MonoBehaviour
 
     private void ShowGameOverUI()
     {
-        if (player != null) return;
+        if (player != null || gameOverUI.activeSelf) return;
 
         gameOverUI.SetActive(true);
+        bgm.Stop();
+        Instantiate(gameOverSE);
     }
 }

@@ -2630,6 +2630,9 @@ MonoBehaviour:
   howPlayPanel: {fileID: 110769858}
   rulePanel: {fileID: 1573397571}
   rulePanel2: {fileID: 275636198}
+  startSE: {fileID: 8700518995143582520, guid: adca870c0d4dee047a4f0e348947d734, type: 3}
+  nextPageSE: {fileID: 8453591586332519220, guid: d36bd5b5d93f5644f9b04070adc6f6fb, type: 3}
+  closeSE: {fileID: 1762038542556953666, guid: 26df8edad779bb84689bd5c819aec4b8, type: 3}
 --- !u!4 &1153278622
 Transform:
   m_ObjectHideFlags: 0

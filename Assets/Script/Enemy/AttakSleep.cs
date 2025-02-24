@@ -20,6 +20,9 @@ public class AttakSleep : MonoBehaviour
     [SerializeField] float sleepTime = 1f; //　眠るまでに必要な時間
     private float wakeUpTime = 5f;
 
+    [SerializeField, Header("寝る音")]
+    private GameObject sleepSE;
+
     void Start()
     {
         //敵情報
@@ -62,7 +65,7 @@ public class AttakSleep : MonoBehaviour
     {
         if (isSleep) 
             return; // すでに無力化されている場合はスキップ
-
+        Instantiate(sleepSE);
         isSleep = true;
         
         if (enemyAnim != null)

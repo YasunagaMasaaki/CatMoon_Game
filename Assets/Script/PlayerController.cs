@@ -39,6 +39,15 @@ public class PlayerController : MonoBehaviour
     private float knockbackDuration = 0.2f;
     private bool isKnockedBack = false;
 
+    [SerializeField, Header("ジャンプ音")]
+    private GameObject jumpSE; 
+    [SerializeField, Header("ダメージ音")]
+    private GameObject damageSE;
+    [SerializeField, Header("ライト音")]
+    private GameObject lightSE;
+
+    private GameObject currentLightSE; // 生成したSEオブジェクトを保持
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -88,6 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
+            Instantiate(jumpSE);
             isJumping = true;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             anim.SetBool("Jump", true);
@@ -116,6 +126,11 @@ public class PlayerController : MonoBehaviour
             isUseLight = true;
             playerLight.enabled = true;
             lightCollider.enabled = true;
+
+            if (currentLightSE == null)
+            {
+                currentLightSE = Instantiate(lightSE);
+            }
         }
 
         //使用時間減少
@@ -133,6 +148,12 @@ public class PlayerController : MonoBehaviour
             isUseLight = false;
             playerLight.enabled = false;
             lightCollider.enabled = false;
+
+            if (currentLightSE != null)
+            {
+                Destroy(currentLightSE);
+                currentLightSE = null; // 参照をクリア
+            }
         }
     }
 
@@ -140,6 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) // 敵との衝突を確認
         {
+            Instantiate(damageSE);
             Hit(collision.gameObject); 
             gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
             StartCoroutine(Muteki());

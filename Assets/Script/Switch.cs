@@ -15,6 +15,11 @@ public class Switch : MonoBehaviour
     [SerializeField, Header("スライダーUI")]
     private Slider lightSlider; // スイッチのスライダー
 
+    [SerializeField, Header("カウント音")]
+    private GameObject countSE;
+
+    private GameObject currentCountSE; // 生成したカウント音オブジェクトを保持
+
     void Start()
     {
         countdownText.gameObject.SetActive(false); // 最初は非表示
@@ -70,6 +75,11 @@ public class Switch : MonoBehaviour
     {
         int remainingTime = Mathf.CeilToInt(Opening); // 小数を切り上げて整数化
 
+        if (currentCountSE == null && countSE != null)
+        {
+            currentCountSE = Instantiate(countSE);
+        }
+
         while (remainingTime > 0)
         {
             countdownText.text = $"{remainingTime}";
@@ -83,5 +93,11 @@ public class Switch : MonoBehaviour
         }
 
         countdownText.gameObject.SetActive(false); // カウントダウンを非表示
+
+        if (currentCountSE != null)
+        {
+            Destroy(currentCountSE);
+            currentCountSE = null; // 参照をクリア
+        }
     }
 }

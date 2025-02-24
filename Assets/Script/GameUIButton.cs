@@ -12,15 +12,18 @@ public class GameUIButton : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     //private bool isPaused = false;
 
-    [SerializeField] private Button reStart2Button;
     [SerializeField] private Button tittle2Button;
     [SerializeField] private Button closeButton;
+
+    [SerializeField, Header("スタート音")]
+    private GameObject startSE;
+    [SerializeField, Header("閉じる音")]
+    private GameObject closeSE;
 
     void Start()
     {
         reStartButton.onClick.AddListener(OnReStartButtonClick);
         tittleButton.onClick.AddListener(OnTittleButtonClick);
-        reStart2Button.onClick.AddListener(OnReStart2ButtonClick);
         tittle2Button.onClick.AddListener(OnTittle2ButtonClick);
         closeButton.onClick.AddListener(OnCloseButtonClick);
     }
@@ -41,22 +44,22 @@ public class GameUIButton : MonoBehaviour
 
     void OnReStartButtonClick()
     {
+        Instantiate(startSE);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void OnTittleButtonClick()
     {
+        Instantiate(startSE);
         SceneManager.LoadScene("Tittle");
-    }
-    void OnReStart2ButtonClick()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void OnTittle2ButtonClick()
     {
+        Instantiate(startSE);
         SceneManager.LoadScene("Tittle");
     }
     void OnCloseButtonClick()
     {
+        Instantiate(closeSE);
         //isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1f; // 時間を元に戻す
