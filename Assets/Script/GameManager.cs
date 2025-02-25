@@ -47,19 +47,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
-
         fade = FindObjectOfType<Fade>();
+        player.GetComponent<PlayerController>().enabled = false;
         fade.FadeStart(GameStart);
     }
 
     private void GameStart()
     {
+        player.GetComponent<PlayerController>().enabled = true;
         UpdateScoreUI();
     }
 
     private void Update()
     {
         ShowGameOverUI();
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     public void AddMoon()
@@ -74,7 +78,8 @@ public class GameManager : MonoBehaviour
         }
         if (moonCollected >= totalMoon)
         {
-            GameClear();
+            fade.FadeStart(End);
+            player.GetComponent<PlayerController>().enabled = false;
         }
     }
 
@@ -86,11 +91,6 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         scoreText.text = $"{moonCollected}/{totalMoon}";
-    }
-
-    private void GameClear()
-    {
-        fade.FadeStart(End);
     }
 
     private void End()

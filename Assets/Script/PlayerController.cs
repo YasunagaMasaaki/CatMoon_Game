@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
-using UnityEditor.Tilemaps; // Light2Dを使用するための名前空間
+using UnityEngine.Tilemaps; // Light2Dを使用するための名前空間
 using UnityEngine.SceneManagement; // シーン管理のために必要
 
 public class PlayerController : MonoBehaviour

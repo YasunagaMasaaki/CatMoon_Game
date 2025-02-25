@@ -62,6 +62,7 @@ public class GameUIButton : MonoBehaviour
     void OnTittle2ButtonClick()
     {
         Instantiate(startSE);
+        Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
         SceneManager.LoadScene("Tittle");
     }
     

@@ -16,7 +16,7 @@ public class BackGround : MonoBehaviour
     void Start()
     {
         startPosx = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        length = GetComponent<SpriteRenderer>().bounds.size.x *2;
         newcamera = Camera.main.gameObject;
 
         initPos = transform.position;
