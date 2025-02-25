@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Moon : MonoBehaviour
 {
+    [SerializeField, Header("ゲット音")]
+    private GameObject getSE;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             GameManager.instance.AddMoon(); // スコアを追加
+
+            Instantiate(getSE);
 
             PlayerController playerController = other.GetComponent<PlayerController>();
             if(playerController != null)

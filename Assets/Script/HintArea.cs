@@ -5,6 +5,10 @@ using UnityEngine;
 public class HintArea : MonoBehaviour
 {
     public GameObject hintPanel;  // UIパネル
+    public bool IsHintPanelActive()
+    {
+        return hintPanel.activeSelf;
+    }
 
     private bool isPlayerInRange = false;
 
@@ -12,8 +16,6 @@ public class HintArea : MonoBehaviour
 
     [SerializeField, Header("ヒント音")]
     private GameObject hintSE;
-    [SerializeField, Header("カウント音")]
-    private GameObject countSE;
     [SerializeField, Header("BGM")]
     private AudioSource bgm;
 

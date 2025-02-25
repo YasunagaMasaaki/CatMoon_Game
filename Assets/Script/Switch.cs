@@ -57,7 +57,7 @@ public class Switch : MonoBehaviour
             lightHitTime = 0f;
             lightSlider.value = 0;
         }
-            
+
     }
 
     private void OpenDoor()

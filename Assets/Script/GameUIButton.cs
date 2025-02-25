@@ -41,6 +41,13 @@ public class GameUIButton : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f; // ŽžŠÔ‚ðŽ~‚ß‚é
     }
+    void OnCloseButtonClick()
+    {
+        Instantiate(closeSE);
+        //isPaused = false;
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
+    }
 
     void OnReStartButtonClick()
     {
@@ -57,11 +64,5 @@ public class GameUIButton : MonoBehaviour
         Instantiate(startSE);
         SceneManager.LoadScene("Tittle");
     }
-    void OnCloseButtonClick()
-    {
-        Instantiate(closeSE);
-        //isPaused = false;
-        pausePanel.SetActive(false);
-        Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
-    }
+    
 }

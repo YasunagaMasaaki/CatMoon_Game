@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4791897434460418473
+--- !u!1 &6436782536954727210
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7400192305596796655}
-  - component: {fileID: 8035781336672855020}
-  - component: {fileID: -5513342224003510937}
+  - component: {fileID: 8436723261991490496}
+  - component: {fileID: 1348535439252634161}
+  - component: {fileID: 1224738598787870088}
   m_Layer: 0
-  m_Name: HintSE
+  m_Name: GetSE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7400192305596796655
+--- !u!4 &8436723261991490496
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791897434460418473}
+  m_GameObject: {fileID: 6436782536954727210}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 899.4784, y: 510.51877, z: 68659.12}
+  m_LocalPosition: {x: 50.41183, y: 13.162418, z: -0.09030593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &8035781336672855020
+--- !u!82 &1348535439252634161
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791897434460418473}
+  m_GameObject: {fileID: 6436782536954727210}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d181a76d9985d9f40be7c9f18ab4ee08, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 50815431b3e0e5746a783c98d43ce584, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -129,13 +129,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-5513342224003510937
+--- !u!114 &1224738598787870088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791897434460418473}
+  m_GameObject: {fileID: 6436782536954727210}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f7225bb59819ec40af75869cb32cc8a, type: 3}

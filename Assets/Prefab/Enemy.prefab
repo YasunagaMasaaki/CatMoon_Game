@@ -194,4 +194,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 1
-  sleepTime: 1
+  sleepTime: 0.7
+  sleepSE: {fileID: 3809704358441837751, guid: 0b4624b635ef335488b481c3fab6a468, type: 3}

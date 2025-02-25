@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 1
-  sleepTime: 1
+  sleepTime: 0.7
+  sleepSE: {fileID: 3809704358441837751, guid: 0b4624b635ef335488b481c3fab6a468, type: 3}
 --- !u!114 &2607253322100442192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePoints:
-  - {x: 10, y: 7.06, z: 0}
-  - {x: 23, y: 7.06, z: 0}
+  - {x: 14, y: -2, z: 0}
+  - {x: 24, y: -2, z: 0}
   speed: 3
