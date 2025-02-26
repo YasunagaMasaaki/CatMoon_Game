@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class HintArea : MonoBehaviour
 {
-    public GameObject hintPanel;  // UIパネル
-    public bool IsHintPanelActive()
-    {
-        return hintPanel.activeSelf;
-    }
-
-    private bool isPlayerInRange = false;
-
-    private bool hasTriggered = false;
-
+    [SerializeField,Header("ヒントパネル")]
+    public GameObject hintPanel;
     [SerializeField, Header("ヒント音")]
     private GameObject hintSE;
     [SerializeField, Header("BGM")]
     private AudioSource bgm;
-
+    private bool isPlayerInRange = false;
+    private bool hasTriggered = false; //連続発動を阻止
+    public bool IsHintPanelActive()
+    {
+        return hintPanel.activeSelf;
+    }
     void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
@@ -28,11 +25,9 @@ public class HintArea : MonoBehaviour
             Time.timeScale = 1f; // 時間を元に戻す
         }
     }
-
-    // プレイヤーが範囲に入ったとき
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !hasTriggered) // Playerタグがある場合
+        if (other.CompareTag("Player") && !hasTriggered)
         {
             bgm.Stop();
             Instantiate(hintSE);
@@ -42,8 +37,6 @@ public class HintArea : MonoBehaviour
             Time.timeScale = 0f; // 時間を止める
         }
     }
-
-    // プレイヤーが範囲を出たとき
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

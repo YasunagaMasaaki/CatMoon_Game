@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Onplayer : MonoBehaviour
 {
-    [SerializeField] Transform elevator; // エレベーターのTransform
-    [SerializeField] GameObject playerOnElevator = null; // エレベーターに乗っているプレイヤー
+    [SerializeField,Header("エレベーターのTransform")]
+    private Transform elevator;
+    [SerializeField, Header("エレベーターに乗っているプレイヤー")]
+    private GameObject playerOnElevator = null;
 
     void OnCollisionStay2D(Collision2D collision)
     {

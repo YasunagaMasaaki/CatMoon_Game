@@ -6,35 +6,29 @@ using UnityEngine.UI;
 public class Switch : MonoBehaviour
 {
     private float lightHitTime = 0f;
-    private float openDoorTime = 2f;
+    private float openDoorTime = 2f; //ライトを当てないといけない時間
     [SerializeField, Header("扉が空いてる時間")]
     private float Opening;
     [SerializeField, Header("カウントダウンUI")]
-    private Text countdownText; // UIのText (TextMeshProの場合は TMP_Text)
-
+    private Text countdownText;
     [SerializeField, Header("スライダーUI")]
-    private Slider lightSlider; // スイッチのスライダー
-
+    private Slider lightSlider;
     [SerializeField, Header("カウント音")]
     private GameObject countSE;
-
     private GameObject currentCountSE; // 生成したカウント音オブジェクトを保持
 
     void Start()
     {
-        countdownText.gameObject.SetActive(false); // 最初は非表示
-
+        countdownText.gameObject.SetActive(false);
         lightSlider.maxValue = openDoorTime;
         lightSlider.value = 0;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (lightHitTime > 0)
         {
             lightHitTime += Time.deltaTime;
-            lightSlider.value = lightHitTime; // スライダー更新
+            lightSlider.value = lightHitTime;
 
             if (lightHitTime >= openDoorTime)
             {

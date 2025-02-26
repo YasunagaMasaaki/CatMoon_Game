@@ -16,7 +16,7 @@ public class BackGround : MonoBehaviour
     void Start()
     {
         startPosx = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x *2;
+        length = GetComponent<SpriteRenderer>().bounds.size.x * 2;
         newcamera = Camera.main.gameObject;
 
         initPos = transform.position;
@@ -32,15 +32,15 @@ public class BackGround : MonoBehaviour
         Parallax();
     }
 
+    //è„â∫ÉJÉÅÉâí«è]
     private void FollowCamera()
     {
-        
         float y = newcamera.transform.position.y - 7f;
         y = Mathf.Clamp(y, initPos.y, Mathf.Infinity);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
     }
 
-
+    //ç∂âEÉJÉÅÉâí«è]
     private void Parallax()
     {
         float temp = newcamera.transform.position.x * (1- parallxEffect);

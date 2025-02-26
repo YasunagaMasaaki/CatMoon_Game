@@ -37,7 +37,6 @@ public class CameraManager : MonoBehaviour
             StartCoroutine(Shake());
         }
     }
-
     IEnumerator Shake()
     {
         Vector3 initPos = transform.position;

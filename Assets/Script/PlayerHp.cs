@@ -7,7 +7,6 @@ public class PlayerHp : MonoBehaviour
 {
     [SerializeField, Header("HPÉAÉCÉRÉì")]
     private GameObject playerIcon;
-
     private PlayerController player;
     private int beforeHP;
 
@@ -38,7 +37,6 @@ public class PlayerHp : MonoBehaviour
 
         Image[] icons = transform.GetComponentsInChildren<Image>();
         
-
         for (int i = 0; i < icons.Length; i++)
         {
             icons[i].gameObject.SetActive(i < player.GetHP());

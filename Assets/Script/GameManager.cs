@@ -8,40 +8,32 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private GameObject player;
+    private Fade fade;
 
+    [SerializeField,Header("必要な収集数")]
+    public int totalMoon = 5;
     private int moonCollected = 0; // 現在の収集数
-    public int totalMoon = 5;      // 必要な収集数
-
-    public Text scoreText;
 
     [SerializeField, Header("変更するエレベーター")]
     private GameObject movePoint;
-
     private Vector2 movePosition = new Vector2(73.5f,35f);
 
     [SerializeField, Header("ゲームオーバーUI")]
     private GameObject gameOverUI;
-
-    private GameObject player;
-
-    private Fade fade;
+    [SerializeField, Header("スコアUI")]
+    public Text scoreText;
 
     [SerializeField, Header("ゲームオーバー音")]
     private GameObject gameOverSE;
     [SerializeField, Header("BGM")]
     private AudioSource bgm;
 
-
     void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
     }
 
     void Start()
@@ -74,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         if (moonCollected == 4)
         {
-            Last();
+            movePoint.transform.position = movePosition;
         }
         if (moonCollected >= totalMoon)
         {
@@ -82,12 +74,6 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerController>().enabled = false;
         }
     }
-
-    private void Last()
-    {
-       movePoint.transform.position = movePosition;
-    }
-
     private void UpdateScoreUI()
     {
         scoreText.text = $"{moonCollected}/{totalMoon}";

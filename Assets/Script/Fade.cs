@@ -49,7 +49,6 @@ public class Fade : MonoBehaviour
         float alpha = fadeCount / fadeTime;
         image.color = new Color(image.color.r, image.color.g, image.color.b,alpha);
     }
-
     private void FadeIn()
     {
         fadeCount -= Time.deltaTime;

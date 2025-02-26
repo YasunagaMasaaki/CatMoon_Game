@@ -4,37 +4,29 @@ using UnityEngine;
 
 public class AttakSleep : MonoBehaviour
 {
-    private Animator enemyAnim;
-
-    // 睡眠状態
-    private bool isSleep = false; 
-
-    //敵情報 
-    private Collider2D enemyCollider; 
+    private Collider2D enemyCollider;
     private Rigidbody2D rb;
+    private Animator enemyAnim;
+   
     [SerializeField, Header("攻撃力")]
     private int attackPower;
-
-    //Light時間
-    private float lightHitTime = 0f; // ライトが当たっている時間
-    [SerializeField] float sleepTime = 1f; //　眠るまでに必要な時間
+    [SerializeField, Header("眠るまでに必要な時間")]
+    private float sleepTime;
     private float wakeUpTime = 5f;
-
+    private float lightHitTime = 0f;
+    private bool isSleep = false;
     [SerializeField, Header("寝る音")]
     private GameObject sleepSE;
 
     void Start()
     {
-        //敵情報
         enemyCollider = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
-
         enemyAnim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // 無力化中なら攻撃を無効化
         if (isSleep) return;
 
         // ライトが当たっている場合、睡眠状態に移行
@@ -63,8 +55,8 @@ public class AttakSleep : MonoBehaviour
 
     void Sleep()
     {
-        if (isSleep) 
-            return; // すでに無力化されている場合はスキップ
+        if (isSleep)  return;
+
         Instantiate(sleepSE);
         isSleep = true;
         
@@ -74,7 +66,7 @@ public class AttakSleep : MonoBehaviour
             enemyCollider.enabled = false;
         if (rb != null) 
             rb.simulated = false;
-        // 敵の向きを固定（例：右向きに固定）
+        // 睡眠中敵の向きを右に固定
         transform.localScale = new Vector3
             (Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 

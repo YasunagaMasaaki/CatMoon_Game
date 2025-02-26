@@ -3,39 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.Tilemaps; // Light2Dを使用するための名前空間
-using UnityEngine.SceneManagement; // シーン管理のために必要
+using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+
     [SerializeField,Header("体力")]
     private int hp;
-    [SerializeField, Header("無敵時間")]
-    private float damageTime;
-    [SerializeField,Header("点滅時間")]
-    private float flashTime;
-    [SerializeField,Header("移動速度")] 
+    [SerializeField, Header("移動速度")]
     private float moveSpeed;
-
-    [SerializeField] Light2D playerLight;
-    private bool isUseLight = false;
-    private CapsuleCollider2D lightCollider;
-    //LightSlider
-    public Slider lightSlider;
-    [SerializeField,Header("ライト使用可能時間")]
-    public float maxLightTime;
-    public float lightTime;
-
-    //ジャンプ
-    [SerializeField,Header("ジャンプ力")] 
+    [SerializeField, Header("ジャンプ力")]
     private float jumpForce;
-    private Rigidbody2D rb;
     private bool isJumping = false;
 
+    [SerializeField, Header("ライト使用可能時間")]
+    public float maxLightTime;
+    [SerializeField, Header("ライト本体")] 
+    private Light2D playerLight;
+    private CapsuleCollider2D lightCollider;
+    private bool isUseLight = false;
+    public Slider lightSlider;
+    public float lightTime;
+
+    [SerializeField, Header("無敵時間")]
+    private float damageTime;
+    [SerializeField, Header("点滅時間")]
+    private float flashTime;
     [SerializeField,Header("ノックバックの強さ")] 
-    private float knockbackForce; // ノックバックの強さ
+    private float knockbackForce;
     private float knockbackDuration = 0.2f;
     private bool isKnockedBack = false;
 
@@ -45,23 +44,20 @@ public class PlayerController : MonoBehaviour
     private GameObject damageSE;
     [SerializeField, Header("ライト音")]
     private GameObject lightSE;
-
     private GameObject currentLightSE; // 生成したSEオブジェクトを保持
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        anim = GetComponent<Animator>();
-
         lightTime = maxLightTime;
         lightSlider.maxValue = maxLightTime;
-        lightSlider.value = lightTime; 
-        
+        lightSlider.value = lightTime;
         // ライトの範囲を表示するためのコライダーを追加
         lightCollider = playerLight.GetComponent<CapsuleCollider2D>();
-        lightCollider.isTrigger = true; // トリガーとして設定
+        lightCollider.isTrigger = true;
         lightCollider.enabled = false; // 最初は無効化
     }
 
@@ -93,7 +89,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
@@ -103,7 +99,8 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Jump", true);
         }
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    //無限ジャンプ阻止
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Stage"))
         {
@@ -111,7 +108,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Jump", false);
         }
     }
-    void CheckFall()
+    private void CheckFall()
     {
         if (rb.velocity.y < -1)
             anim.SetBool("Fall", true);  
@@ -128,15 +125,11 @@ public class PlayerController : MonoBehaviour
             lightCollider.enabled = true;
 
             if (currentLightSE == null)
-            {
                 currentLightSE = Instantiate(lightSE);
-            }
         }
-
         //使用時間減少
         lightTime -= Time.deltaTime;
         lightTime = Mathf.Clamp(lightTime, 0, maxLightTime);
-
         //スライダー更新
         if (lightSlider != null)
             lightSlider.value = lightTime;
@@ -159,69 +152,48 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) // 敵との衝突を確認
-        {
-            Instantiate(damageSE);
-            Hit(collision.gameObject); 
-            gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
-            StartCoroutine(Muteki());
-        }
+        if (!collision.gameObject.CompareTag("Enemy")) return;
+
+        Instantiate(damageSE);
+        Hit(collision.gameObject);
+        StartCoroutine(Muteki());
     }
 
     public void Damage(int damage, Vector2 knockbackDir)
     {
         hp = Mathf.Max(hp - damage, 0);
-        Dead();
-
-        // ノックバックを適用
-        if (!isKnockedBack)
-        {
-            StartCoroutine(Knockback(knockbackDir));
-        }
+        if (hp <= 0) Destroy(gameObject);
+        else if (!isKnockedBack) StartCoroutine(Knockback(knockbackDir));
     }
 
-    void Hit(GameObject enemy)
+    private void Hit(GameObject enemy)
     {
-        Vector2 knockbackDir = (transform.position - enemy.transform.position).normalized; // 敵の方向からノックバック方向を計算
-        enemy.GetComponent<AttakSleep>().PlayerDamage(this, knockbackDir);
+        Vector2 knockbackDir = (transform.position - enemy.transform.position).normalized;
+        enemy.GetComponent<AttakSleep>()?.PlayerDamage(this, knockbackDir);
     }
 
-    IEnumerator Knockback(Vector2 direction)
+    private IEnumerator Knockback(Vector2 direction)
     {
         isKnockedBack = true;
         rb.velocity = direction * knockbackForce;
-
         yield return new WaitForSeconds(knockbackDuration);
-
         rb.velocity = Vector2.zero;
         isKnockedBack = false;
     }
 
-    IEnumerator Muteki()
+    private IEnumerator Muteki()
     {
-        Color color = spriteRenderer.color;
+        gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
         for (int i = 0; i < 5; i++)
         {
+            spriteRenderer.color = new Color(1, 1, 1, 0);
             yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = new Color(color.r, color.g, color.b, 0.0f);
+            spriteRenderer.color = new Color(1, 1, 1, 1);
             yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = new Color(color.r, color.g, color.b, 1.0f);
         }
-        spriteRenderer.color = color;
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
-    private void Dead()
-    {
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public int GetHP()
-    {
-        return hp;
-    }
+    public int GetHP() => hp;
 }
 

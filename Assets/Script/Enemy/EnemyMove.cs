@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField] Vector3[] movePoints;
-    [SerializeField] float speed = 3f;
+    [SerializeField,Header("移動範囲")] 
+    private Vector3[] movePoints;
+    [SerializeField,Header("移動速度")]
+    private float speed = 3f;
 
     private int pointIndex = 0;
     private Vector3 previousPosition; // 前フレームの位置を記録
@@ -14,14 +16,14 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        previousPosition = transform.position; // 初期位置を設定
+        previousPosition = transform.position;
     }
 
     void Update()
     {
         if (anim.GetBool("Sleep"))
         {
-            anim.SetBool("Move", false); // 移動アニメーションも停止
+            anim.SetBool("Move", false);
             return;
         }
 
@@ -49,13 +51,13 @@ public class EnemyMove : MonoBehaviour
         // 現在の位置を記録（次のフレームで移動量を計算するため）
         previousPosition = transform.position;
     }
-
+    //移動ポイントを赤点で表示
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         for (int i = 0; i < movePoints.Length; i++)
         {
-            Gizmos.DrawSphere(movePoints[i], 0.2f); // 移動地点を小さな球で描画
+            Gizmos.DrawSphere(movePoints[i], 0.2f);
         }
     }
 }
