@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private GameObject player;
-    private Fade fade;
+    [SerializeField] private Fade fade;
+    [SerializeField] private GameObject fadePanel;
 
     [SerializeField,Header("•K—v‚ÈûW”")]
     public int totalMoon = 5;
@@ -39,8 +40,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
-        fade = FindObjectOfType<Fade>();
         player.GetComponent<PlayerController>().enabled = false;
+        fadePanel.SetActive(true);
+        fade = FindObjectOfType<Fade>();
         fade.FadeStart(GameStart);
     }
 

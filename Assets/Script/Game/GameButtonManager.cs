@@ -11,6 +11,7 @@ public class GameButtonManager : MonoBehaviour
 
     [SerializeField] private GameObject pausePanel;
 
+    [SerializeField] private Button reStart2Button;
     [SerializeField] private Button tittle2Button;
     [SerializeField] private Button closeButton;
 
@@ -22,6 +23,7 @@ public class GameButtonManager : MonoBehaviour
     void Start()
     {
         reStartButton.onClick.AddListener(OnReStartButtonClick);
+        reStart2Button.onClick.AddListener(OnReStart2ButtonClick);
         tittleButton.onClick.AddListener(OnTittleButtonClick);
         tittle2Button.onClick.AddListener(OnTittle2ButtonClick);
         closeButton.onClick.AddListener(OnCloseButtonClick);
@@ -40,24 +42,35 @@ public class GameButtonManager : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f; // ŽžŠÔ‚ðŽ~‚ß‚é
     }
-    void OnCloseButtonClick()
+    private void OnCloseButtonClick()
     {
         Instantiate(closeSE);
         pausePanel.SetActive(false);
         Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
     }
 
-    void OnReStartButtonClick()
+    private void Rstaet()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void OnReStartButtonClick()
     {
         Instantiate(startSE);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    void OnTittleButtonClick()
+    private void OnReStart2ButtonClick()
+    {
+        Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
+        Instantiate(startSE);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    private void OnTittleButtonClick()
     {
         Instantiate(startSE);
         SceneManager.LoadScene("Tittle");
     }
-    void OnTittle2ButtonClick()
+    private void OnTittle2ButtonClick()
     {
         Instantiate(startSE);
         Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
