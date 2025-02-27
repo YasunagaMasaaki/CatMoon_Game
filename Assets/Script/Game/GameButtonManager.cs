@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameUIButton : MonoBehaviour
+public class GameButtonManager : MonoBehaviour
 {
     [SerializeField] private Button reStartButton;
     [SerializeField] private Button tittleButton;
 
     [SerializeField] private GameObject pausePanel;
-    //private bool isPaused = false;
 
     [SerializeField] private Button tittle2Button;
     [SerializeField] private Button closeButton;
@@ -44,7 +43,6 @@ public class GameUIButton : MonoBehaviour
     void OnCloseButtonClick()
     {
         Instantiate(closeSE);
-        //isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1f; // ŽžŠÔ‚ðŒ³‚É–ß‚·
     }
