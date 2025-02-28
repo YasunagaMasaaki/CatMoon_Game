@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class AnimationFadeController : MonoBehaviour
 {
-    public Animator animator;  // アニメーター
-    public Image fadeImage;    // フェードインさせるUI画像
+    public Animator animator;
+    public Image fadeImage;
     public float fadeDuration = 2.0f; // フェード時間
 
-    public Button[] buttons;    // フェード後に表示するボタンの配列
+    public Button[] buttons;
 
     private void Start()
     {
