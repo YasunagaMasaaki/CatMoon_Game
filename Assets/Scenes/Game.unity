@@ -3165,6 +3165,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1945658412}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: maxLightTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: knockbackForce
       value: 10
       objectReference: {fileID: 0}

@@ -70,10 +70,15 @@ public class PlayerController : MonoBehaviour
         CheckFall();
 
         //Light”­“®
-        if (Input.GetKey(KeyCode.L) && lightTime > 0) 
+        if (Input.GetMouseButton(0) && lightTime > 0) 
             UseLight();
-        else if (Input.GetKeyUp(KeyCode.L) || lightTime <= 0) 
+        else if (Input.GetMouseButtonUp(0) || lightTime <= 0) 
             StopLight();
+
+        if (!isUseLight)
+        {
+            RecoveryLight();
+        }
     }
 
     private void Move()
@@ -148,6 +153,14 @@ public class PlayerController : MonoBehaviour
                 currentLightSE = null; // ŽQÆ‚ðƒNƒŠƒA
             }
         }
+    }
+
+    private void RecoveryLight()
+    {
+        if (lightTime < maxLightTime)
+            lightTime = Mathf.Min(lightTime + Time.deltaTime*0.4f, maxLightTime);
+        if (lightSlider != null)
+            lightSlider.value = lightTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
