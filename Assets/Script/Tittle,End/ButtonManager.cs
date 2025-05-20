@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -13,18 +14,12 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private Button exitButton;
     [SerializeField] private Button manualButton;
     [SerializeField] private Button closeButton;
-    [SerializeField] private Button howButton;
-    [SerializeField] private Button ruleButton;
-    [SerializeField] private Button rule2Button;
+    [SerializeField] private List<Button> otherButtons; // 操作不能にしたい他のボタンたち
 
     [SerializeField, Header("ボタンパネル")]
     private GameObject buttonPanel;
     [SerializeField, Header("操作説明パネル")]
     private GameObject howPlayPanel;
-    [SerializeField, Header("ルール１パネル")]
-    private GameObject rulePanel;
-    [SerializeField, Header("ルール２パネル")]
-    private GameObject rulePanel2;
     [SerializeField, Header("スタート音")]
     private GameObject startSE;
     [SerializeField, Header("ページ音")]
@@ -34,13 +29,12 @@ public class ButtonManager : MonoBehaviour
 
     void Start()
     {
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+
         startButton.onClick.AddListener(OnStartButtonClick);
         exitButton.onClick.AddListener(OnExitButtonClick);
         manualButton.onClick.AddListener(OnManualButtonClick);
         closeButton.onClick.AddListener(OnCloseButtonClick);
-        howButton.onClick.AddListener(OnHowButtonClick);
-        ruleButton.onClick.AddListener(OnRuleButtonClick);
-        rule2Button.onClick.AddListener(OnRule2ButtonClick);
 
         fade = FindObjectOfType<Fade>();
     }
@@ -69,40 +63,33 @@ public class ButtonManager : MonoBehaviour
         Instantiate(nextPageSE);
         buttonPanel.SetActive(true);
         howPlayPanel.SetActive(true);
-    }
-    //すべてのパネルをfalseに
-    private void HideAllPanels()
-    {
-        howPlayPanel.SetActive(false);
-        rulePanel.SetActive(false);
-        rulePanel2.SetActive(false);
-    }
 
+        // closeButton を選択状態に
+        EventSystem.current.SetSelectedGameObject(closeButton.gameObject);
+
+        // 他のボタンを無効にする
+        foreach (var btn in otherButtons)
+        {
+            btn.interactable = false;
+        }
+
+        // closeButton だけ有効化
+        closeButton.interactable = true;
+    }
     private void OnCloseButtonClick()
     {
         Instantiate(closeSE);
         buttonPanel.SetActive(false);
-        HideAllPanels();
-    }
+        howPlayPanel.SetActive(false);
 
-    private void OnHowButtonClick()
-    {
-        Instantiate(nextPageSE);
-        HideAllPanels();
-        howPlayPanel.SetActive(true);
-    }
+        foreach (var btn in otherButtons)
+        {
+            btn.interactable = true;
+        }
 
-    private void OnRuleButtonClick()
-    {
-        Instantiate(nextPageSE);
-        HideAllPanels();
-        rulePanel.SetActive(true);
-    }
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(exitButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(manualButton.gameObject);
 
-    private void OnRule2ButtonClick()
-    {
-        Instantiate(nextPageSE);
-        HideAllPanels();
-        rulePanel2.SetActive(true);
     }
 }

@@ -69,10 +69,14 @@ public class PlayerController : MonoBehaviour
         // 落下中のアニメーション設定
         CheckFall();
 
-        //Light発動
-        if (Input.GetMouseButton(0) && lightTime > 0) 
+        float trigger = Input.GetAxis("Triggers");
+
+        bool isLightButtonDown = Input.GetMouseButton(0) || trigger > 0.1f;
+        bool isLightButtonUp = Input.GetMouseButtonUp(0) || trigger <= 0.1f;
+
+        if (isLightButtonDown && lightTime > 0)
             UseLight();
-        else if (Input.GetMouseButtonUp(0) || lightTime <= 0) 
+        else if (isLightButtonUp || lightTime <= 0)
             StopLight();
 
         if (!isUseLight)
@@ -83,9 +87,9 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        float x = Input.GetAxis("Horizontal");
         transform.Translate(new Vector3(x, 0, 0) * moveSpeed * Time.deltaTime);
-        anim.SetBool("Walk", x != 0.0f);
+        anim.SetBool("Walk", Mathf.Abs(x) > 0.01f);
         // ライト発動中は向きを固定
         if (!isUseLight)
         {
