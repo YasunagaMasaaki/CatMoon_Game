@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField, Header("ゲームオーバーUI")]
     private GameObject gameOverUI;
+    [SerializeField] private Button reStartButton;
     [SerializeField, Header("スコアUI")]
     public Text scoreText;
 
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
         if (player != null || gameOverUI.activeSelf) return;
 
         gameOverUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(reStartButton.gameObject);
         bgm.Stop();
         Instantiate(gameOverSE);
     }
