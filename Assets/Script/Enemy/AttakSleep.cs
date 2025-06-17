@@ -9,9 +9,9 @@ public class AttakSleep : MonoBehaviour
     private Animator enemyAnim;
    
     [SerializeField, Header("UŒ‚—Í")]
-    private int attackPower;
+    private int attackPower;//1
     [SerializeField, Header("–°‚é‚Ü‚Å‚É•K—v‚ÈŠÔ")]
-    private float sleepTime;
+    private float sleepTime;//0.7
     private float wakeUpTime = 5f;
     private float lightHitTime = 0f;
     private bool isSleep = false;

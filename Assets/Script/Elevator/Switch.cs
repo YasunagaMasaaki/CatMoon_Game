@@ -8,7 +8,7 @@ public class Switch : MonoBehaviour
     private float lightHitTime = 0f;
     private float openDoorTime = 2f; //ライトを当てないといけない時間
     [SerializeField, Header("扉が空いてる時間")]
-    private float Opening;
+    private float Opening;//3
     [SerializeField, Header("カウントダウンUI")]
     private Text countdownText;
     [SerializeField, Header("スライダーUI")]
