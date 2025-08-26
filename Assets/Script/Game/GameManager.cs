@@ -14,8 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject fadePanel;
 
     [SerializeField,Header("必要な収集数")]
-    public int totalMoon = 5;
+    public int totalMoon;
     private int moonCollected = 0; // 現在の収集数
+
+    [SerializeField] private string scenes;
+
 
     [SerializeField, Header("変更するエレベーター")]
     private GameObject movePoint;
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     private void End()
     {
-        SceneManager.LoadScene("End");
+        SceneManager.LoadScene(scenes);
     }
 
     private void ShowGameOverUI()

@@ -29,6 +29,17 @@ public class ButtonManager : MonoBehaviour
         fade = FindObjectOfType<Fade>();
     }
 
+    // チュートリアル開始の処理
+    public void OnTutorialButtonClick()
+    {
+        Instantiate(startSE);
+        fade.FadeStart(TutorialStart);
+    }
+    private void TutorialStart()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
     // ゲーム開始の処理
     public void OnStartButtonClick()
     {
@@ -37,7 +48,7 @@ public class ButtonManager : MonoBehaviour
     }
     private void GameStart()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameMain");
     }
 
     // ゲーム終了の処理
