@@ -4236,6 +4236,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9029736514291794255, guid: 30957f1a9d599dc40bd335f702b232b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4471,13 +4475,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1792281116007812589, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2312259156867801535, guid: 71cf79398c469f646a885a847d368768, type: 3}
     - target: {fileID: 3852485042168372978, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.85897
+      value: 59.61
       objectReference: {fileID: 0}
     - target: {fileID: 3852485042168372978, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.047762
+      value: -3.98
       objectReference: {fileID: 0}
     - target: {fileID: 3852485042168372978, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4511,10 +4519,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3895220004497789357, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895220004497789357, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5225845635100501042, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
       propertyPath: movePosition
       value: 
       objectReference: {fileID: 1181043012}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7081184
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_Size.y
+      value: 2.030294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.3456364
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.494941
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5217391
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399023227703696296, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9116522525524296310, guid: 962edfaad9870ed4783d43f6849b7e4c, type: 3}
       propertyPath: m_Name
       value: Elevator

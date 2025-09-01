@@ -7421,7 +7421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 1117130123}
   fadePanel: {fileID: 1117130119}
-  totalMoon: 1
+  totalMoon: 5
   scenes: Tittle
   movePoint: {fileID: 0}
   gameOverUI: {fileID: 1761723525}
@@ -8496,7 +8496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0/1
+  m_Text: 
 --- !u!222 &1781814640
 CanvasRenderer:
   m_ObjectHideFlags: 0
