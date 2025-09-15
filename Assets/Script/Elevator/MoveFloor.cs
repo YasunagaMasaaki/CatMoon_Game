@@ -56,7 +56,6 @@ public class MoveFloor : MonoBehaviour
             lightSlider.value = 0;
             SetLightHit(false);
         }
-
             
     }
 

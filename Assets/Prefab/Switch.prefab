@@ -439,6 +439,7 @@ MonoBehaviour:
   Opening: 3
   countdownText: {fileID: 0}
   lightSlider: {fileID: 472390330600625762}
+  countSE: {fileID: 8084614590981847505, guid: a3e5e324a3f9c1c49ac9e7ed0fa573aa, type: 3}
 --- !u!1 &9066785100478121748
 GameObject:
   m_ObjectHideFlags: 0
