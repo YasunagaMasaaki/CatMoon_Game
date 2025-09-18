@@ -187,6 +187,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 knockbackDir = (transform.position - enemy.transform.position).normalized;
         enemy.GetComponent<AttakSleep>()?.PlayerDamage(this, knockbackDir);
+        enemy.GetComponent<Inazuma>()?.PlayerDamage(this,knockbackDir);
     }
 
     private IEnumerator Knockback(Vector2 direction)
