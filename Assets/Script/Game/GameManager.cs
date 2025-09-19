@@ -19,11 +19,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private string scenes;
 
-
-    [SerializeField, Header("変更するエレベーター")]
-    private GameObject movePoint;
-    private Vector2 movePosition = new Vector2(73.5f,35f);
-
     [SerializeField, Header("ゲームオーバーUI")]
     private GameObject gameOverUI;
     [SerializeField] private Button reStartButton;
@@ -71,10 +66,6 @@ public class GameManager : MonoBehaviour
 
         UpdateScoreUI();
 
-        if (moonCollected == 4)
-        {
-            movePoint.transform.position = movePosition;
-        }
         if (moonCollected >= totalMoon)
         {
             fade.FadeStart(End);
