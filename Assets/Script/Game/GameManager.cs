@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        ShowGameOverUI();
+        //ShowGameOverUI();
 
         if(Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
@@ -82,13 +82,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scenes);
     }
 
-    private void ShowGameOverUI()
-    {
-        if (player != null || gameOverUI.activeSelf) return;
+    //private void ShowGameOverUI()
+    //{
+    //    if (player != null || gameOverUI.activeSelf) return;
 
-        gameOverUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(reStartButton.gameObject);
-        bgm.Stop();
-        Instantiate(gameOverSE);
-    }
+    //    gameOverUI.SetActive(true);
+    //    EventSystem.current.SetSelectedGameObject(reStartButton.gameObject);
+    //    bgm.Stop();
+    //    Instantiate(gameOverSE);
+    //}
 }

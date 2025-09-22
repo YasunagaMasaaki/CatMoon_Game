@@ -17,9 +17,9 @@ public class PlayerHp : MonoBehaviour
         CreateHPIcon();
     }
 
-    private void CreateHPIcon()
+    public void CreateHPIcon()
     {
-        for(int i = 0; i < player.GetHP(); i++)
+        for (int i = 0; i < player.GetHP(); i++)
         {
             GameObject playerHPObj = Instantiate(playerIcon);
             playerHPObj.transform.SetParent(transform, false);

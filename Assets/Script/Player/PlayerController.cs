@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField,Header("体力")]
-    private int hp;
+    public int hp;
     [SerializeField, Header("移動速度")]
     private float moveSpeed;
     [SerializeField, Header("ジャンプ力")]
@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Header("ライト音")]
     private GameObject lightSE;
     private GameObject currentLightSE; // 生成したSEオブジェクトを保持
+
+    [Header("ワープ先の位置")]
+    public Vector2 warpPosition;  // インスペクターで設定
 
     void Start()
     {
@@ -179,8 +182,27 @@ public class PlayerController : MonoBehaviour
     public void Damage(int damage, Vector2 knockbackDir)
     {
         hp = Mathf.Max(hp - damage, 0);
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0) WarpPlayer();
         else if (!isKnockedBack) StartCoroutine(Knockback(knockbackDir));
+    }
+
+    void WarpPlayer()
+    {
+        // プレイヤーをワープさせる
+        transform.position = warpPosition;
+
+        // HPをリセット
+        hp = 3;
+
+        lightTime = maxLightTime;
+
+        FindObjectOfType<PlayerHp>().CreateHPIcon();
+    }
+
+    // チェックポイントから呼ばれる
+    public void SetCheckpoint(Vector2 newPosition)
+    {
+        warpPosition = newPosition;
     }
 
     private void Hit(GameObject enemy)
