@@ -23,6 +23,7 @@ public class Moon : MonoBehaviour
             //スライダー更新
             if (playerController.lightSlider != null)
                 playerController.lightSlider.value = playerController.lightTime;
+
             Destroy(gameObject);
         }
     }

@@ -3332,7 +3332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: hp
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: jumpSE
@@ -3360,11 +3360,19 @@ PrefabInstance:
       objectReference: {fileID: 1945658412}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: maxLightTime
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: knockbackForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: warpPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216516328731961396, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
+      propertyPath: warpPosition.y
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5860999067963726799, guid: 1d3d24bb979101f4bbd547fd99519aeb, type: 3}
       propertyPath: m_Size.x
@@ -6698,7 +6706,6 @@ MonoBehaviour:
   fadePanel: {fileID: 1117130119}
   totalMoon: 1
   scenes: Tittle
-  movePoint: {fileID: 0}
   gameOverUI: {fileID: 1761723525}
   reStartButton: {fileID: 1618310638}
   scoreText: {fileID: 1781814639}

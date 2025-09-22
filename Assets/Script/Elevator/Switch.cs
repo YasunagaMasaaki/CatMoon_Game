@@ -62,6 +62,7 @@ public class Switch : MonoBehaviour
             door.SetActive(false);
         }
         countdownText.gameObject.SetActive(true);
+        GetComponent<Collider2D>().enabled = false;
         StartCoroutine(CloseDoorAfterTime(doors));
     }
 
@@ -93,5 +94,6 @@ public class Switch : MonoBehaviour
             Destroy(currentCountSE);
             currentCountSE = null; // éQè∆ÇÉNÉäÉA
         }
+        GetComponent<Collider2D>().enabled = true;
     }
 }
