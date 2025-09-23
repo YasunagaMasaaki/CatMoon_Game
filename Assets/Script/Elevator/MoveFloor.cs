@@ -29,7 +29,6 @@ public class MoveFloor : MonoBehaviour
         lightSlider.maxValue = lightHitTime;
         lightSlider.value = 0;
     }
-
     private void Update()
     {
         if (moveFloor == null || movePosition == null)

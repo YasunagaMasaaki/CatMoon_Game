@@ -88,4 +88,14 @@ public class ButtonManager : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(startButton.gameObject);
     }
+
+    public void OnTittleButtonClick()
+    {
+        Instantiate(startSE);
+        fade.FadeStart(TittleScene);
+    }
+    private void TittleScene()
+    {
+        SceneManager.LoadScene("Tittle");
+    }
 }

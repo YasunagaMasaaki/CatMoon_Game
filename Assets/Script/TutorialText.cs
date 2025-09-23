@@ -6,7 +6,6 @@ public class TutorialText : MonoBehaviour
 {
     public GameObject textUIObject;       // 表示するUIオブジェクト（Canvas上のTextなど）
 
-
     void Start()
     {
         textUIObject.SetActive(false);

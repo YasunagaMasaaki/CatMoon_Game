@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private string scenes;
 
-    [SerializeField, Header("ゲームオーバーUI")]
-    private GameObject gameOverUI;
     [SerializeField] private Button reStartButton;
     [SerializeField, Header("スコアUI")]
     public Text scoreText;
@@ -54,8 +52,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //ShowGameOverUI();
-
         if(Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
     }
@@ -81,14 +77,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(scenes);
     }
-
-    //private void ShowGameOverUI()
-    //{
-    //    if (player != null || gameOverUI.activeSelf) return;
-
-    //    gameOverUI.SetActive(true);
-    //    EventSystem.current.SetSelectedGameObject(reStartButton.gameObject);
-    //    bgm.Stop();
-    //    Instantiate(gameOverSE);
-    //}
 }

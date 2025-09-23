@@ -14,15 +14,6 @@ public class Memo : MonoBehaviour
 
     private bool hasPlayed = false; // 一度だけ生成するためのフラグ
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !hasPlayed)
@@ -32,7 +23,6 @@ public class Memo : MonoBehaviour
             hasPlayed = true; // もう生成したのでフラグを立てる
         }
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") && hasPlayed)
